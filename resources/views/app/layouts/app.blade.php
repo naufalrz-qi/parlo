@@ -24,7 +24,13 @@
     {{-- navbar start --}}
     @extends('app.layouts.navbar')
     {{-- navbar end --}}
-    
+
+    {{-- Hero --}}
+    @yield('content')
+    {{-- Hero end --}}
+
+
+    @extends('app.layouts.footer')
     {{-- icons js --}}
     <script>
         feather.replace();

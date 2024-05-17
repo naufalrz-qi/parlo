@@ -2,10 +2,10 @@
     <a href="#" class="navbar-logo">Parlo</a>
 
     <div class="navbar-nav">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Destinations</a>
-        <a href="#">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#contact">Contact</a>
         <div id="auth-nav">
             <a href="#" class="btn-primary">Login</a>
             <a href="#" class="btn-secondary">Register</a>
