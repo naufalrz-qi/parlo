@@ -65,7 +65,12 @@
                 <h3 class="destination-card-title">Pergasingan</h3>
                 <p class="destination-card-price">IDR 30K</p>
             </div>
+
         </div>
+        <div class="button">
+            <a href="#" class="btn-primary">View More</a>
+        </div>
+
     </section>
     {{-- destinations end --}}
 
@@ -80,7 +85,9 @@
         </p>
 
         <div class="row">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.0500806965515!2d116.11370507422028!3d-8.591183687217205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdbf5c2462a5ed%3A0xbc0f44d683d529b1!2sUniversitas%20Bumigora!5e0!3m2!1sid!2sid!4v1715907476075!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.0500806965515!2d116.11370507422028!3d-8.591183687217205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdbf5c2462a5ed%3A0xbc0f44d683d529b1!2sUniversitas%20Bumigora!5e0!3m2!1sid!2sid!4v1715907476075!5m2!1sid!2sid"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
 
             <form action="">
                 <div class="input-group">

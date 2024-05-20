@@ -6,24 +6,41 @@
         <a href="#about">About</a>
         <a href="#destinations">Destinations</a>
         <a href="#contact">Contact</a>
-        <div id="auth-nav">
-            <a href="#" class="btn-primary">Login</a>
-            <a href="#" class="btn-secondary">Register</a>
-        </div>
+        @if (Route::has('login'))
+            <div id="auth-nav">
+                @auth
+                <a href="{{ route('dashboard') }}"" class="btn-secondary">Dashboard</a>
+
+                @else
+                    <a href="{{ route('login') }}" class="btn-primary">Login</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="btn-secondary">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
     </div>
 
     <div class="navbar-extra">
+        @if (Route::has('login'))
         <div id="auth-extra">
-            <a href="#" class="btn-primary">Login</a>
-            <a href="#" class="btn-secondary">Register</a>
+            @auth
+                <a href="{{ route('dashboard') }}"" class="btn-secondary">Dashboard</a>
+            @else
+                <a href="{{ route('login') }}" class="btn-primary">Login</a>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="btn-secondary">Register</a>
+                @endif
+            @endauth
         </div>
+    @endif
         <a href="#" class="menu" id="hamburger-menu"><i data-feather="menu"></i></a>
     </div>
 </nav>
 
-    {{-- icons js --}}
-    <script>
-        feather.replace();
-    </script>
+{{-- icons js --}}
+<script>
+    feather.replace();
+</script>
 
-    <script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
