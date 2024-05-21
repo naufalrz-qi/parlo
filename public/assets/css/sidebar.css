@@ -1,0 +1,490 @@
+:root {
+    --primary: #14a07d;
+    --secondary: #4b6e79;
+    --text-dark-primary: #03291f;
+    --text-light-primary: #f3fffc;
+    --bg: #eff6f7;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--bg);
+    color: var(--text-dark-primary);
+    /* min-height: 2000px; */
+}
+
+/* Navbar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    margin: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 1.2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 24rem;
+    height: 100vh;
+    transition: 0.3s;
+}
+
+.navbar .navbar-nav.active {
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    right: 0;
+}
+
+
+.navbar .navbar-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary);
+    font-style: italic;
+}
+.navbar .navbar-nav a {
+    color: var(--text-dark-primary);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+}
+
+
+.navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+}
+
+
+.navbar .navbar-nav #dp-destinations {
+    display: none;
+    background-color: #03291f15;
+}
+.navbar .navbar-nav #dp-facilities {
+    display: none;
+    background-color: #03291f15;
+}
+.navbar .navbar-nav #dp-reviews {
+    display: none;
+    background-color: #03291f15;
+}
+.navbar .navbar-nav #dp-reports {
+    display: none;
+    background-color: #03291f15;
+}
+.navbar .navbar-nav #dp-users {
+    display: none;
+    background-color: #03291f15;
+}
+
+.navbar .navbar-nav a:hover {
+    color: var(--text-dark-primary);
+}
+
+.navbar .navbar-nav a::after {
+    content: "";
+    display: block;
+    border-bottom: 0.1rem solid var(--primary);
+    transform-origin: 0 0;
+    transform: scaleX(0);
+    transition: 0.2s linear;
+}
+
+.navbar .navbar-extra {
+    align-items: center;
+}
+
+.navbar .navbar-extra .menu {
+    color: var(--text-dark-primary);
+    margin: 0 0.5rem;
+}
+
+.navbar .navbar-extra .menu:hover {
+    color: var(--primary);
+}
+
+#hamburger-menu {
+    display: inline-block;
+}
+
+.btn-primary {
+    color: var(--text-light-primary);
+    background-color: var(--primary);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.btn-primary:hover {
+    background-color: #14a07d70;
+}
+
+.btn-secondary {
+    color: var(--text-light-primary);
+    background-color: var(--secondary);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.btn-secondary:hover {
+    background-color: #4b6e7970;
+}
+
+#auth-nav {
+    display: block;
+    color: var(--text-light-primary);
+
+}
+
+#auth-nav a::after {
+    transition: none;
+    border-bottom: none;
+}
+#auth-nav a {
+    color: var(--text-light-primary);
+}
+
+/* Hero Section */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url("../img/hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    bottom: 0;
+}
+
+.hero .content {
+    padding: 1.4rem 7%;
+    max-width: 60rem;
+}
+
+.hero .content h1 {
+    font-size: 5em;
+    color: var(--text-light-primary);
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+    line-height: 1.2;
+}
+
+.hero .content h1 span {
+    color: var(--primary);
+    font-style: italic;
+}
+
+.hero .content p {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    line-height: 1.4;
+    font-weight: 300;
+    color: var(--text-light-primary);
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+    mix-blend-mode: difference;
+}
+
+.hero .content .cta {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+    color: var(--text-light-primary);
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+}
+
+/* about */
+.about,
+.destinations,
+.contact {
+    padding: 8rem 7% 1.4rem;
+}
+
+.about h2,
+.destinations h2,
+.contact h2 {
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 3rem;
+}
+
+.about h2 span,
+.destinations h2 span,
+.contact h2 span {
+    color: var(--primary);
+}
+
+.about .row {
+    display: flex;
+}
+
+.about .row .about-img {
+    flex: 1 1 45rem;
+}
+
+.about .row .about-img img {
+    width: 100%;
+    border-radius: 1.2rem;
+}
+
+.about .row .content {
+    flex: 1 1 35rem;
+    padding: 0 2rem;
+}
+
+.about .row .content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.about .row .content p {
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 200;
+    line-height: 1.6;
+}
+
+/* destinations */
+.destinations h2,
+.contact h2 {
+    margin-bottom: 1rem;
+}
+
+.destinations p,
+.contact p {
+    text-align: center;
+    max-width: 36rem;
+    margin: auto;
+    font-weight: 200;
+    line-height: 1.6;
+}
+
+.destinations .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    justify-content: center;
+}
+
+.destinations .row .destinations-card {
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.destinations .row .destinations-card img {
+    border-radius: 20%;
+    width: 80%;
+}
+.destinations .button {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.destinations .button .btn-primary {
+    margin-top: 3rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.destinations .row .destinations-card .destination-card-title {
+    margin: 1.5rem auto 0.5rem;
+}
+
+/* Contact */
+.contact .row {
+    display: flex;
+    margin-top: 2rem;
+    background-color: #4b6e79;
+    border-radius: 1.4rem;
+}
+
+.contact .row .map {
+    flex: 1 1 45rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1.4rem;
+}
+
+.contact .row form {
+    flex: 1 1 45rem;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.contact .row form .input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: var(--bg);
+    border: 1px solid #eee;
+    padding-left: 2rem;
+    border-radius: 0.5rem;
+}
+
+.contact .row form .input-group input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    background: none;
+    color: var(--text-dark-primary);
+}
+
+.contact .row form button {
+    margin-top: 3rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* footer */
+footer {
+    background-color: white;
+    text-align: center;
+    padding: 1rem 0 3rem;
+    margin-top: 3rem;
+}
+
+footer .socials {
+    padding: 1rem 0;
+}
+
+footer .socials a {
+    color: var(--text-dark-primary);
+    margin: 1rem;
+}
+
+footer .socials a:hover {
+    color: var(--primary);
+}
+footer .links a:hover {
+    color: var(--primary);
+}
+footer .links {
+    margin-bottom: 1.4rem;
+}
+
+footer .links a {
+    color: var(--text-dark-primary);
+    padding: 0.7rem 1rem;
+}
+
+footer .credit {
+    font-size: 0.8rem;
+}
+
+footer .credit a {
+    color: var(--text-dark-primary);
+    font-weight: 700;
+}
+
+/* media Queries */
+
+/* Laptop */
+
+@media (max-width: 1366px) {
+    html {
+        font-size: 90%;
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 758px) {
+    html {
+        font-size: 70%;
+    }
+
+
+
+
+
+
+
+
+
+    /* about */
+    .about .row {
+        flex-wrap: wrap;
+    }
+
+    .about .row .about-img img {
+        height: 24rem;
+        object-fit: cover;
+        object-position: center;
+        margin-bottom: 1.4rem;
+    }
+
+    .about .row .content {
+        padding: 0;
+    }
+
+    .about .row .content p {
+        font-size: 1.6rem;
+    }
+
+    .destinations p {
+        font-size: 1.4rem;
+    }
+
+    .contact .row {
+        flex-wrap: wrap;
+    }
+
+    .contact .row .map {
+        height: 30rem;
+    }
+
+    .contact .row form {
+        padding-top: 0.5rem;
+        padding-inline: 5rem;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 450px) {
+    html {
+        font-size: 60%;
+    }
+}
