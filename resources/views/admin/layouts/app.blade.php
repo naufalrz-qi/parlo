@@ -18,12 +18,12 @@
 
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('assets/css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}">
 </head>
 
 <body>
     {{-- navbar start --}}
     @extends('admin.layouts.navbar')
-    @extends('admin.layouts.sidebar')
     {{-- navbar end --}}
 
     {{-- Hero --}}

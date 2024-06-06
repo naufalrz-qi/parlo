@@ -10,6 +10,14 @@ html {
     scroll-behavior: smooth;
 }
 
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(128, 128, 128, 0.75), rgba(128, 128, 128, 0.75), rgba(128, 128, 128, 0.75));
+    margin:0rem 2rem 0rem 2rem;
+
+}
+
 * {
     font-family: "Montserrat", sans-serif;
     margin: 0;
@@ -52,6 +60,13 @@ body {
     width: 24rem;
     height: 100vh;
     transition: 0.3s;
+    overflow-y: scroll;
+}
+
+.navbar .navbar-nav p {
+    font-size:1rem;
+    color:gray;
+    margin:1rem 1.5rem 1rem 1.5rem;
 }
 
 .navbar .navbar-nav.active {
@@ -78,6 +93,14 @@ body {
 
 .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.2);
+}
+
+.navbar .navbar-nav .dp {
+    padding: 0 2.5rem;
+}
+
+.navbar .navbar-nav .dp a {
+    margin: 0rem;
 }
 
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DestinationsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +17,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('/admin/dashboard', 'dashboard')->name('admin.dashboard');
     });
+    Route::controller(DestinationsController::class)->group(function () {
+        Route::get('/admin/destinations/view', 'index')->name('view.destinations');
+        Route::get('/admin/destinations/add', 'add')->name('add.destinations');
+        Route::post('/admin/destinations/store', 'store')->name('store.destination');
+    });
+
 });
 
 

@@ -2,34 +2,36 @@
     <a href="#" class="navbar-logo">Parlo</a>
 
     <div class="navbar-nav">
+        <p style=>Dashboard</p>
+        <hr>
+        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+        <p style=>Data Master</p>
+        <hr>
         <a onclick="toggleDropdown('destinations')" href="#">Destinations</a>
         <div class="dp" id="dp-destinations">
-            <a href="#">Add Destination</a>
-            <a href="#">Edit Destination</a>
-            <a href="#">View Destination</a>
+            <a href="{{ route('add.destinations') }}">Add Destination</a>
+            <a href="{{ route('view.destinations') }}">View Destination</a>
         </div>
         <a onclick="toggleDropdown('facilities')" href="#">Facilities</a>
         <div class="dp" id="dp-facilities">
             <a href="#">Add Facility</a>
-            <a href="#">Edit Facility</a>
             <a href="#">View Facility</a>
         </div>
         <a onclick="toggleDropdown('reviews')" href="#">Reviews</a>
         <div class="dp" id="dp-reviews">
             <a href="#">Add Review</a>
-            <a href="#">Edit Review</a>
             <a href="#">View Review</a>
         </div>
+        <p style=>Reports and User Datas</p>
+        <hr>
         <a onclick="toggleDropdown('reports')" href="#">Reports</a>
         <div class="dp" id="dp-reports">
             <a href="#">Add Report</a>
-            <a href="#">Edit Report</a>
             <a href="#">View Report</a>
         </div>
         <a onclick="toggleDropdown('users')" href="#">Users</a>
         <div class="dp" id="dp-users">
             <a href="#">Add User</a>
-            <a href="#">Edit User</a>
             <a href="#">View User</a>
         </div>
         <div id="auth-nav">
