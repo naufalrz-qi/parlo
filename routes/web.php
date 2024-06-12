@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DestinationsController;
+use App\Http\Controllers\FacilityController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,6 +23,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/destinations/add', 'add')->name('add.destinations');
         Route::post('/admin/destinations/store', 'store')->name('store.destination');
     });
+
+    Route::resource('facilities', FacilityController::class);
 
 });
 

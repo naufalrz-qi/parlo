@@ -14,8 +14,8 @@
         </div>
         <a onclick="toggleDropdown('facilities')" href="#">Facilities</a>
         <div class="dp" id="dp-facilities">
-            <a href="#">Add Facility</a>
-            <a href="#">View Facility</a>
+            <a href="{{ route('facilities.create') }}">Add Facility</a>
+            <a href="{{ route('facilities.index') }}">View Facilities</a>
         </div>
         <a onclick="toggleDropdown('reviews')" href="#">Reviews</a>
         <div class="dp" id="dp-reviews">

@@ -85,9 +85,9 @@ body {
 .navbar .navbar-nav a {
     color: var(--text-dark-primary);
     display: block;
-    margin: 1.5rem;
+    margin: 1rem;
     padding: 0.5rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 
@@ -447,7 +447,7 @@ footer .credit a {
 
 @media (max-width: 1366px) {
     html {
-        font-size: 90%;
+        font-size: 85%;
     }
 }
 
@@ -455,7 +455,7 @@ footer .credit a {
 
 @media (max-width: 758px) {
     html {
-        font-size: 70%;
+        font-size: 75%;
     }
 
 
@@ -508,6 +508,6 @@ footer .credit a {
 
 @media (max-width: 450px) {
     html {
-        font-size: 60%;
+        font-size: 65%;
     }
 }

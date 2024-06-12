@@ -1,4 +1,8 @@
 
+table {
+    overflow-x: auto;
+    width: auto;
+}
    td,  th {
     padding-inline: 10px;
   }
@@ -25,6 +29,7 @@
     align-items:center;
     justify-content:center;
     flex-direction:column;
+    overflow-x: auto;
 
 }
 
@@ -61,3 +66,32 @@
 }
 
 /* hr */
+
+@media (max-width: 768px) {
+    table th, table td {
+        font-size: 0.875rem;
+        padding: 8px 10px;
+
+    }
+}
+
+@media (max-width: 450px) {
+    table th, table td {
+        font-size: 0.875rem;
+        padding: 8px 10px;
+
+    }
+
+    .container {
+        align-items:start;
+        justify-content:start;
+    }
+
+    table {
+        width: 100%; /* Lebar tabel 100% agar bisa scroll horizontal */
+        max-width: 450px; /* Lebar maksimum tabel di layar mobile */
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 1rem;
+    }
+}
