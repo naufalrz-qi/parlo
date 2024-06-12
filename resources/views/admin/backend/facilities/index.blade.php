@@ -6,9 +6,10 @@
         <a href="{{ route('facilities.create') }}" class="btn btn-primary">Add New Facility</a>
 
         <div class="table-responsive">
-            <table class="table table-striped table-bordered mt-3">
-                <thead class="thead-dark">
+            <table>
+                <thead>
                     <tr>
+                        <th>No</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Location</th>
@@ -19,8 +20,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($facilities as $facility)
+                    @foreach($facilities as $key => $facility)
                         <tr>
+                            <td>{{ $key + 1 }}</td>
                             <td>{{ $facility->name }}</td>
                             <td>{{ $facility->description }}</td>
                             <td>{{ $facility->location }}</td>

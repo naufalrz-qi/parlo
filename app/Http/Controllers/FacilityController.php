@@ -24,12 +24,22 @@ class FacilityController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'location' => 'nullable|string|max:255',
-            'opening_hours' => 'nullable|string|max:255',
+            'opening_hour_start' => 'required|string|max:5',
+            'opening_hour_end' => 'required|string|max:5',
             'contact_info' => 'nullable|string|max:255',
             'type' => 'nullable|string|max:255',
         ]);
 
-        Facility::create($request->all());
+        $opening_hours = $request->input('opening_hour_start') . ' - ' . $request->input('opening_hour_end');
+
+        Facility::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'location' => $request->input('location'),
+            'opening_hours' => $opening_hours,
+            'contact_info' => $request->input('contact_info'),
+            'type' => $request->input('type'),
+        ]);
 
         return redirect()->route('facilities.index')
                          ->with('success', 'Facility created successfully.');

@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\FacilityController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminDashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,6 +14,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/destinations', [DestinationsController::class, 'showDestinations'])->name('destinations.universal');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+});
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
@@ -25,7 +32,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
     Route::resource('facilities', FacilityController::class);
-
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 });
 
 

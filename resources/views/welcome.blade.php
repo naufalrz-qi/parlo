@@ -68,7 +68,7 @@
 
         </div>
         <div class="button">
-            <a href="#" class="btn-primary">View More</a>
+            <a href="{{ route('destinations.universal') }}" class="btn-primary">View More</a>
         </div>
 
     </section>

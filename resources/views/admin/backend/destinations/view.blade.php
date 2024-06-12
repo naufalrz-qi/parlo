@@ -2,6 +2,8 @@
 @section('content')
 
 <div class="container">
+    <h1>Destinations</h1>
+        <a href="{{ route('add.destinations') }}" class="btn btn-primary">Add New Destinations</a>
     <table>
         <tr>
             <th>No</th>
@@ -29,5 +31,5 @@
 
     </table>
 </div>
-   
+
 @endsection

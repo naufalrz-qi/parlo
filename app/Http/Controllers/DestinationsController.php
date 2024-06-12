@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class DestinationsController extends Controller
 {
+    public function showDestinations()
+    {
+        $destinations = Destinations::all();
+        return view('universal.destinations.destinations', compact('destinations'));
+    }
+
     public function index()
     {
         $datas = Destinations::get();
