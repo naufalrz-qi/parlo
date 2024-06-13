@@ -25,7 +25,12 @@
         @if (Route::has('login'))
         <div id="auth-extra">
             @auth
-                <a href="{{ route('dashboard') }}"" class="btn-secondary">Dashboard</a>
+              @if (Auth::user()->role == 'admin')
+                <a href="{{ route('admin.dashboard') }}"" class="btn-secondary">Dashboard</a>
+              @else
+                <a href="{{ route('home') }}"" class="btn-secondary">Dashboard</a>
+              @endif
+
             @else
                 <a href="{{ route('login') }}" class="btn-primary">Login</a>
                 @if (Route::has('register'))
