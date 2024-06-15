@@ -18,7 +18,7 @@ class DestinationsTableSeeder extends Seeder
             'description' => 'A beautiful beach with golden sand and clear waters.',
             'location' => 'Bali, Indonesia',
             'iframe' => '<iframe src="https://maps.google.com?...</iframe>',
-            'image' => 'bali_beach.jpg',
+            'image' => 'default.jpg',
             'price' => 100000,
         ]);
 
@@ -27,7 +27,7 @@ class DestinationsTableSeeder extends Seeder
             'description' => 'A famous volcano with stunning sunrise views.',
             'location' => 'East Java, Indonesia',
             'iframe' => '<iframe src="https://maps.google.com?...</iframe>',
-            'image' => 'mount_bromo.jpg',
+            'image' => 'default.jpg',
             'price' => 150000,
         ]);
 
@@ -36,7 +36,7 @@ class DestinationsTableSeeder extends Seeder
             'description' => 'A nature reserve and temple complex home to hundreds of monkeys.',
             'location' => 'Ubud, Bali, Indonesia',
             'iframe' => '<iframe src="https://maps.google.com?...</iframe>',
-            'image' => 'ubud_monkey_forest.jpg',
+            'image' => 'default.jpg',
             'price' => 50000,
         ]);
 
@@ -45,7 +45,7 @@ class DestinationsTableSeeder extends Seeder
             'description' => 'A pristine archipelago known for its marine biodiversity and coral reefs.',
             'location' => 'West Papua, Indonesia',
             'iframe' => '<iframe src="https://maps.google.com?...</iframe>',
-            'image' => 'raja_ampat.jpg',
+            'image' => 'default.jpg',
             'price' => 200000,
         ]);
     }

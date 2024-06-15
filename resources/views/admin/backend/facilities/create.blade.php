@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Create Facility</h1>
     <div class="form-container">
-        <form action="{{ route('facilities.store') }}" method="POST">
+        <form action="{{ route('facilities.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>
@@ -48,6 +48,25 @@
             <div class="form-group">
                 <label for="type">Type</label>
                 <input type="text" id="type" name="type" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" id="image" name="image" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="destination_id">Destination</label>
+                <select id="destination_id" name="destination_id" class="form-control" required>
+                    @foreach($destinations as $destination)
+                        <option value="{{ $destination->id }}">{{ $destination->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">

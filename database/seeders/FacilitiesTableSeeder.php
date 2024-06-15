@@ -20,6 +20,9 @@ class FacilitiesTableSeeder extends Seeder
             'opening_hours' => '08:00 - 20:00',
             'contact_info' => '0123456789',
             'type' => 'Resort',
+            'price' => 1500000, // Price in IDR
+            'image' => 'default.jpg',
+            'destination_id' => 1 // Make sure you have this destination id in your destinations table
         ]);
 
         Facility::create([
@@ -29,6 +32,9 @@ class FacilitiesTableSeeder extends Seeder
             'opening_hours' => '09:00 - 17:00',
             'contact_info' => '0987654321',
             'type' => 'Museum',
+            'price' => 500000, // Price in IDR
+            'image' => 'default.jpg',
+            'destination_id' => 2 // Make sure you have this destination id in your destinations table
         ]);
 
         Facility::create([
@@ -38,6 +44,9 @@ class FacilitiesTableSeeder extends Seeder
             'opening_hours' => '10:00 - 22:00',
             'contact_info' => '0123487654',
             'type' => 'Club',
+            'price' => 2000000, // Price in IDR
+            'image' => 'default.jpg',
+            'destination_id' => 3 // Make sure you have this destination id in your destinations table
         ]);
     }
 }

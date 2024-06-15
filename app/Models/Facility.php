@@ -10,4 +10,9 @@ class Facility extends Model
     use HasFactory;
     protected $table = 'facilities';
     protected $guarded = '';
+
+    public function destination()
+    {
+        return $this->belongsTo(Destinations::class);
+    }
 }

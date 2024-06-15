@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('opening_hours')->nullable();
             $table->string('contact_info')->nullable();
             $table->string('type')->nullable();
+            $table->bigInteger('price'); // Menambahkan atribut price
+            $table->string('image')->nullable(); // Menambahkan atribut image
+            $table->unsignedBigInteger('destination_id'); // Menambahkan atribut destination_id untuk relasi
+            $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade'); // Mengatur foreign key
             $table->timestamps();
         });
     }
