@@ -1,4 +1,4 @@
-@extends('app.layouts.app')
+@extends($layout)
 
 @section('content')
 <div class="container">
@@ -7,12 +7,12 @@
     <div class="card-container">
         @foreach($destinations as $destination)
             <div class="card">
-                <img src="{{ asset('storage/' . $destination->image) }}" alt="{{ $destination->name }}" class="card-img">
+                <img src="{{ asset('assets/img/destinations/' . $destination->image) }}" alt="{{ $destination->name }}" class="card-img">
                 <div class="card-body">
                     <h2 class="card-title">{{ $destination->name }}</h2>
                     <p class="card-text">{{ $destination->description }}</p>
                     <p class="card-location"><strong>Location:</strong> {{ $destination->location }}</p>
-                    <p class="card-price"><strong>Price:</strong> ${{ number_format($destination->price, 2) }}</p>
+                    <p class="card-price"><strong>Price:</strong> Rp{{ number_format($destination->price, 2, ',', '.') }}</p>
                     <a href="#" class="btn btn-order">Order</a>
                 </div>
             </div>

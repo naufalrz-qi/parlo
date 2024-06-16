@@ -41,30 +41,15 @@
         </p>
 
         <div class="row">
+
+            @foreach($destinations as $destination)
             <div class="destinations-card">
-                <img src="{{ asset('assets/img/destinations/pergasingan.jpg') }}" alt="Pergasingan"
-                    class="destination-card-image">
-                <h3 class="destination-card-title">Pergasingan</h3>
-                <p class="destination-card-price">IDR 30K</p>
+                <img class="card-img" src="{{ asset('assets/img/destinations/' . $destination->image) }}" alt="{{ $destination->name }}" >
+                <h3 class="destination-card-title">{{ $destination->name }}</h3>
+                <p class="destination-card-price">Rp{{ number_format($destination->price, 2, ',', '.') }}</p>
+
             </div>
-            <div class="destinations-card">
-                <img src="{{ asset('assets/img/destinations/pergasingan.jpg') }}" alt="Pergasingan"
-                    class="destination-card-image">
-                <h3 class="destination-card-title">Pergasingan</h3>
-                <p class="destination-card-price">IDR 30K</p>
-            </div>
-            <div class="destinations-card">
-                <img src="{{ asset('assets/img/destinations/pergasingan.jpg') }}" alt="Pergasingan"
-                    class="destination-card-image">
-                <h3 class="destination-card-title">Pergasingan</h3>
-                <p class="destination-card-price">IDR 30K</p>
-            </div>
-            <div class="destinations-card">
-                <img src="{{ asset('assets/img/destinations/pergasingan.jpg') }}" alt="Pergasingan"
-                    class="destination-card-image">
-                <h3 class="destination-card-title">Pergasingan</h3>
-                <p class="destination-card-price">IDR 30K</p>
-            </div>
+        @endforeach
 
         </div>
         <div class="button">

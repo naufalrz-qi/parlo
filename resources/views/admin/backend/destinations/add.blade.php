@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <h2>Add New Destination</h2>
-    <form action="{{ route('store.destination') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('store.destinations') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">

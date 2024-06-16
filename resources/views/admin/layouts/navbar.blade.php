@@ -31,8 +31,8 @@
         </div>
         <a onclick="toggleDropdown('users')" href="#">Users</a>
         <div class="dp" id="dp-users">
-            <a href="#">Add User</a>
-            <a href="#">View User</a>
+            <a href="{{ route('users.create') }}">Add User</a>
+            <a href="{{ route('users.index') }}">View User</a>
         </div>
         <div id="auth-nav">
             <form method="POST" action="{{ route('logout') }}">

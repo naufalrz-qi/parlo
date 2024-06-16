@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Destinations;
 use App\Models\Facility;
 
-class UserController extends Controller
+class HomeUserController extends Controller
 {
     public function index()
     {

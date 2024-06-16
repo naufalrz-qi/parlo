@@ -2,8 +2,6 @@
 
 @section('content')
 <div class="container">
-    <h1>User Dashboard</h1>
-
     <div class="card-container">
         <h2>Destinations</h2>
         @foreach($destinations as $destination)
