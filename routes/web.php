@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['role:admin'])->group(function () {
         Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-        Route::resource('users', UserController::class)->except(['create', 'store']);
+        Route::resource('users', UserController::class);
 
         Route::prefix('admin')->group(function () {
             Route::get('destinations/view', [DestinationsController::class, 'view'])->name('view.destinations');

@@ -37,11 +37,18 @@ class FacilityController extends Controller
                $user = Auth::user();
 
 
+                if ($user->role == 'employee') {
+                    $destination = $user->employee->destination;
+                return view('admin.backend.facilities.create', compact('destination'));
 
-               $destinations = Destinations::all();
+
+                }else {
+                    $destinations = Destinations::all();
+                    return view('admin.backend.facilities.create', compact('destinations'));
+
+                }
 
 
-               return view('admin.backend.facilities.create', compact('destinations'));
     }
 
     public function store(Request $request)
@@ -55,13 +62,22 @@ class FacilityController extends Controller
             'contact_info' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image',
             'destination_id' => 'required|exists:destinations,id',
         ]);
 
         $opening_hours = $request->input('opening_hour_start') . ' - ' . $request->input('opening_hour_end');
 
-        $imagePath = $request->file('image') ? $request->file('image')->store('facilities', 'public') : 'default.jpg';
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            @unlink(public_path('assets/img/facilities/' . $request->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('assets/img/facilities/'),$filename);
+            $imagePath=$filename;
+         } else {
+            $imagePath='default.jpg';
+         }
 
         Facility::create([
             'name' => $validatedData['name'],
@@ -108,21 +124,30 @@ class FacilityController extends Controller
             'contact_info' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image',
             'destination_id' => 'required|exists:destinations,id',
         ]);
 
         $opening_hours = $request->input('opening_hour_start') . ' - ' . $request->input('opening_hour_end');
 
-        if ($request->hasFile('image')) {
-            // Delete old image if exists
-            if ($facility->image && $facility->image !== 'default.jpg') {
-                unlink(public_path('assets/img/facilities/' . $facility->image));
-            }
-            $imagePath = $request->file('image')->storeAs('assets/img/facilities', $request->file('image')->getClientOriginalName(), 'public');
-        } else {
-            $imagePath = $facility->image;
+
+    if ($request->hasFile('image')) {
+        // Path to the old image
+        $oldImagePath = public_path('assets/img/facilities/' . $facility->image);
+
+        // Delete old image if exists
+        if ($facility->image && $facility->image !== 'default.jpg' && file_exists($oldImagePath)) {
+            unlink($oldImagePath);
         }
+
+        // Store the new image
+        $file = $request->file('image');
+        $filename = date('YmdHi').$file->getClientOriginalName();
+        $file->move(public_path('assets/img/facilities/'),$filename);
+        $imagePath = $filename;
+    } else {
+        $imagePath = $facility->image;
+    }
 
         $facility->update([
             'name' => $validatedData['name'],
@@ -143,10 +168,21 @@ class FacilityController extends Controller
 
     public function destroy(Facility $facility)
     {
-        $facility->delete();
+        if ($facility) {
+            // Delete image file if exists
+            if ($facility->image) {
+                $imagePath = public_path('assets/img/facilities/') . $facility->image;
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
 
-        return redirect()->route('facilities.index')
-                         ->with('success', 'Facility deleted successfully.');
+            $facility->delete();
+
+            return redirect()->route('facilities.index')->with('success', 'Destination deleted successfully');
+        } else {
+            return redirect()->route('facilities.index')->with('error', 'Destination not found');
+        }
     }
 
 

@@ -63,6 +63,8 @@ class DestinationsController extends Controller
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('assets/img/destinations/'),$filename);
             $image=$filename;
+         }else {
+            $image='default.jpg';
          }
 
         $data = Destinations::create([
@@ -99,7 +101,7 @@ public function update(Request $request, $id)
         'description' => 'nullable|string',
         'location' => 'required|string',
         'iframe' => 'nullable|string',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'image' => 'nullable|image',
         'price' => 'required|numeric',
     ]);
 
@@ -113,11 +115,18 @@ public function update(Request $request, $id)
 
     // Handle image upload
     if ($request->hasFile('image')) {
+        $oldImagePath = public_path('assets/img/destinations/' . $destination->image);
+
+        // Delete old image if exists
+        if ($destination->image && $destination->image !== 'default.jpg' && file_exists($oldImagePath)) {
+            unlink($oldImagePath);
+        }
         $image = $request->file('image');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $imageName = date('YmdHi').$image->getClientOriginalExtension();
         $image->move(public_path('assets/img/destinations/'), $imageName);
         $destination->image = $imageName;
     }
+
 
     $destination->save();
 
