@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Edit User</h1>
+    <h1>Edit Employee</h1>
     <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -46,7 +46,6 @@
             </select>
         </div>
 
-        @if($user->role == 'employee')
         <div class="form-group">
             <label for="destination_id">Destination</label>
             <select id="destination_id" name="destination_id" class="form-control">
@@ -58,7 +57,6 @@
                 @endforeach
             </select>
         </div>
-        @endif
 
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

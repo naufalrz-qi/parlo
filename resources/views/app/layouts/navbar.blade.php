@@ -9,8 +9,13 @@
         @if (Route::has('login'))
             <div id="auth-nav">
                 @auth
-                <a href="{{ route('dashboard') }}"" class="btn-secondary">Dashboard</a>
-
+                    @if (Auth::user()->role == 'admin')
+                        <a href="{{ route('admin.dashboard') }}" class="btn-secondary">Dashboard</a>
+                    @elseif (Auth::user()->role == 'employee')
+                        <a href="{{ route('employee.dashboard') }}" class="btn-secondary">Dashboard</a>
+                    @else
+                        <a href="{{ route('home') }}" class="btn-secondary">Dashboard</a>
+                    @endif
                 @else
                     <a href="{{ route('login') }}" class="btn-primary">Login</a>
                     @if (Route::has('register'))
@@ -23,22 +28,23 @@
 
     <div class="navbar-extra">
         @if (Route::has('login'))
-        <div id="auth-extra">
-            @auth
-              @if (Auth::user()->role == 'admin')
-                <a href="{{ route('admin.dashboard') }}"" class="btn-secondary">Dashboard</a>
-              @else
-                <a href="{{ route('home') }}"" class="btn-secondary">Dashboard</a>
-              @endif
-
-            @else
-                <a href="{{ route('login') }}" class="btn-primary">Login</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="btn-secondary">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
+            <div id="auth-extra">
+                @auth
+                    @if (Auth::user()->role == 'admin')
+                        <a href="{{ route('admin.dashboard') }}" class="btn-secondary">Dashboard</a>
+                    @elseif (Auth::user()->role == 'employee')
+                        <a href="{{ route('employee.dashboard') }}" class="btn-secondary">Dashboard</a>
+                    @else
+                        <a href="{{ route('home') }}" class="btn-secondary">Dashboard</a>
+                    @endif
+                @else
+                    <a href="{{ route('login') }}" class="btn-primary">Login</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="btn-secondary">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
         <a href="#" class="menu" id="hamburger-menu"><i data-feather="menu"></i></a>
     </div>
 </nav>

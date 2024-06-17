@@ -13,8 +13,22 @@ class FacilityController extends Controller
 {
     public function index()
     {
-        $facilities = Facility::all();
-        return view('admin.backend.facilities.index', compact('facilities'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                $facilities = Facility::all();
+                $layout = 'admin.layouts.app';
+            } elseif ($user->role === 'employee') {
+                $destination = $user->employee->destination;
+                $facilities = Facility::where('destination_id', $destination->id)->get();
+                $layout = 'employee.layouts.app';
+            }
+        } else {
+            // Default to an empty collection if the user is not authenticated
+            $facilities = collect();
+            $layout = 'layouts.app';
+        }
+        return view('admin.backend.facilities.index', compact('facilities','layout'));
     }
 
     public function create()
@@ -72,25 +86,60 @@ class FacilityController extends Controller
 
     public function edit(Facility $facility)
     {
-        return view('admin.backend.facilities.edit', compact('facility'));
+        $user = Auth::user();
+
+        if ($user->role === 'employee') {
+            $destination = $user->employee->destination;
+            return view('admin.backend.facilities.edit', compact('facility', 'destination'));
+        } else {
+            $destinations = Destinations::all();
+            return view('admin.backend.facilities.edit', compact('facility', 'destinations'));
+        }
     }
 
     public function update(Request $request, Facility $facility)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'location' => 'nullable|string|max:255',
-            'opening_hours' => 'nullable|string|max:255',
-            'contact_info' => 'nullable|string|max:255',
-            'type' => 'nullable|string|max:255',
+            'description' => 'required|string',
+            'location' => 'required|string|max:255',
+            'opening_hour_start' => 'required|string|max:5',
+            'opening_hour_end' => 'required|string|max:5',
+            'contact_info' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image|max:2048',
+            'destination_id' => 'required|exists:destinations,id',
         ]);
 
-        $facility->update($request->all());
+        $opening_hours = $request->input('opening_hour_start') . ' - ' . $request->input('opening_hour_end');
 
-        return redirect()->route('facilities.index')
-                         ->with('success', 'Facility updated successfully.');
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($facility->image && $facility->image !== 'default.jpg') {
+                unlink(public_path('assets/img/facilities/' . $facility->image));
+            }
+            $imagePath = $request->file('image')->storeAs('assets/img/facilities', $request->file('image')->getClientOriginalName(), 'public');
+        } else {
+            $imagePath = $facility->image;
+        }
+
+        $facility->update([
+            'name' => $validatedData['name'],
+            'description' => $validatedData['description'],
+            'location' => $validatedData['location'],
+            'opening_hours' => $opening_hours,
+            'contact_info' => $validatedData['contact_info'],
+            'type' => $validatedData['type'],
+            'price' => $validatedData['price'],
+            'image' => basename($imagePath),
+            'destination_id' => $validatedData['destination_id'],
+        ]);
+
+        return redirect()->route('facilities.index')->with('success', 'Facility updated successfully.');
     }
+
+
 
     public function destroy(Facility $facility)
     {
@@ -99,5 +148,7 @@ class FacilityController extends Controller
         return redirect()->route('facilities.index')
                          ->with('success', 'Facility deleted successfully.');
     }
+
+
 
 }
