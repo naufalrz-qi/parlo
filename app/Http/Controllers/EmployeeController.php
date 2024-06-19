@@ -13,7 +13,18 @@ class EmployeeController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
-        $destination = $user->employee->destination;
+        $employee = $user->employee;
+
+        if (!$employee) {
+            return redirect()->route('error')->with('message', 'You are not registered as an employee. Please contact the admin.');
+        }
+
+        // Check if destination is set for the employee
+        if (!$employee->destination) {
+            return redirect()->route('error')->with('message', 'You have not set your destination. Please contact the admin.');
+        }
+
+        $destination = $employee->destination;
 
         // Get total facilities count
         $totalFacilities = Facility::where('destination_id', $destination->id)->count();

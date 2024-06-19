@@ -32,7 +32,7 @@
                             <td>{{ $facility->opening_hours }}</td>
                             <td>{{ $facility->contact_info }}</td>
                             <td>{{ $facility->type }}</td>
-                            <td>{{ number_format($facility->price, 2, ',', '.') }} IDR</td>
+                            <td>Rp{{ number_format($facility->price, 2, ',', '.') }}</td>
                             <td><img src="{{ asset('storage/' . $facility->image) }}" alt="{{ $facility->name }}" style="width: 50px; height: 50px;"></td>
                             <td>
                                 <a href="{{ route('facilities.show', $facility->id) }}" class="btn btn-info btn-sm">View</a>

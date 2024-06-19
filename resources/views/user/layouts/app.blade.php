@@ -19,6 +19,7 @@
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('assets/css/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/userstyles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/booking.css') }}">
 </head>
 
 <body>

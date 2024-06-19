@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/userstyles.css') }}">
+
+    @yield('style')
 </head>
 
 <body>

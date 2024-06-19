@@ -22,6 +22,7 @@
             <a href="#">Add Review</a>
             <a href="#">View Review</a>
         </div>
+        <a href="{{ route('bookings.index') }}">Booking Transactions</a>
         <p style=>Reports and User Datas</p>
         <hr>
         <a onclick="toggleDropdown('reports')" href="#">Reports</a>

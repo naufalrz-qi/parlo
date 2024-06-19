@@ -23,7 +23,8 @@
                 <td>{{ $data->location }}</td>
                 <td>{{ $data->iframe }}</td>
                 <td><img src="{{ asset('assets/img/destinations/') }}/{{ $data->image }}" alt="" height="50px"></td>
-                <td>{{ $data->price }}</td>
+                <td>Rp{{ number_format($data->price, 2, ',', '.') }}</td>
+
                 <td>
                     <a href="{{ route('show.destinations', $data->id) }}" class="btn btn-info btn-sm">View</a>
                     <a href="{{ route('edit.destinations', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
