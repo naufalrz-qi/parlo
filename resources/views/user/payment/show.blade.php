@@ -47,7 +47,6 @@
             });
 
             function handlePaymentResult(result) {
-                console.log('Payment Result:', result);
                 $.ajax({
                     url: "{{ route('payment.callback') }}",
                     method: "POST",
