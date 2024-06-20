@@ -16,7 +16,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $layout = 'layouts.app'; // Default layout
+            $layout = 'app.layouts.app'; // Default layout
 
             if (Auth::check()) {
                 switch (Auth::user()->role) {

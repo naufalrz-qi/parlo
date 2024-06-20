@@ -1,3 +1,5 @@
+<!-- resources/views/admin/backend/bookings/create.blade.php -->
+
 @extends($layout)
 
 @section('content')
@@ -31,7 +33,7 @@
 
                 <button type="submit">Book</button>
             </form>
-    </div>
+        </div>
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -48,8 +50,8 @@
                                 totalPrice += parseFloat(facilityCheckbox.dataset.price);
                             }
                         });
-                        totalPriceElement.innerText = totalPrice;
-                        totalPriceInput.value = totalPrice;
+                        totalPriceElement.innerText = totalPrice.toFixed(2);
+                        totalPriceInput.value = totalPrice.toFixed(2);
                     });
                 });
             });

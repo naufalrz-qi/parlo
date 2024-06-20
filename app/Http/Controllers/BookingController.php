@@ -30,8 +30,9 @@ class BookingController extends Controller
             'booking_date' => 'required|date',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i',
-            'facilities' => 'array|exists:facilities,id'
-        ]);
+            'facilities' => 'array|exists:facilities,id',
+            'total_price' => 'required|numeric',
+        ]); 
 
         $booking = new Booking();
         $booking->user_id = auth()->user()->id;
@@ -47,7 +48,7 @@ class BookingController extends Controller
         $booking->facilities()->sync($facilities);
 
         if (auth()->user()->role == 'user') {
-            return redirect()->route('payment.page'); // Replace with your payment route
+            return redirect()->route('payment.show', $booking->id);
         }
 
         return redirect()->route('bookings.index');

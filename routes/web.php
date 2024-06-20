@@ -65,7 +65,10 @@ Route::middleware(['admin_or_employee'])->group(function () {
 
 // Booking Routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/payment', [PaymentController::class, 'index'])->name('payment.page');
+    Route::get('payment/{booking}', [PaymentController::class, 'show'])->name('payment.show');
+    Route::post('payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
+    Route::get('payment/success/{booking}', [PaymentController::class, 'success'])->name('payment.success');
+    Route::get('payment/pending/{booking}', [PaymentController::class, 'pending'])->name('payment.pending');
 
 
     Route::get('/bookings/create/{destination}', [BookingController::class, 'create'])->name('bookings.create');
