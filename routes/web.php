@@ -77,18 +77,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit'])->name('bookings.edit');
     Route::put('/bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
     Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
-});
 
-
-Route::middleware(['auth', 'role:user'])->group(function () {
     Route::controller(HomeUserController::class)->group(function () {
         Route::get('/home', 'index')->name('home');
-        Route::get('/tfa-settings', 'tfa')->name('tfa.settings');
     });
 });
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/tfa-settings', [HomeUserController::class, 'tfa'])->name('tfa.settings');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

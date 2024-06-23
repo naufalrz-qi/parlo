@@ -34,6 +34,11 @@
         <div class="dp" id="dp-users">
             <a href="{{ route('users.create') }}">Add User</a>
             <a href="{{ route('users.index') }}">View User</a>
+            <p style=>Settings</p>
+            <hr>
+            <a href="{{ route('tfa.settings') }}">Two Factor Authentication</a>
+
+
         </div>
         <div id="auth-nav">
             <form method="POST" action="{{ route('logout') }}">
