@@ -17,7 +17,7 @@ class HomeUserController extends Controller
         $facilities = Facility::all();
 
 
-        if(!Auth::user()->role === 'user'){
+        if(Auth::user()->role === 'user'){
             return view('user.home', compact('destinations', 'facilities'));
 
 
