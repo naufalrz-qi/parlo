@@ -1,6 +1,7 @@
 <nav class="navbar">
     <a href="#" class="navbar-logo">Parlo</a>
 
+
     <div class="navbar-nav">
         <a href="/#home">Home</a>
         <a href="#about">About</a>

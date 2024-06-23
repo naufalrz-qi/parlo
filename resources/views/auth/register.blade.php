@@ -1,67 +1,78 @@
-<x-guest-layout>
+@extends($layout)
+
+@section('content')
+<div class="container">
+    <h1>Register User</h1>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
+            @error('name')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
-         <!-- Username -->
-         <div class="mt-4">
-            <x-input-label for="username" :value="__('Username')" />
-            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('username')" class="mt-2" />
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username" value="{{ old('username') }}" required autofocus autocomplete="username">
+            @error('username')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
+            @error('email')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
-        <div class="mt-4">
-            <x-input-label for="phonenumber" :value="__('Phone Number')" />
-            <x-text-input id="country_code" class="block w-1/4 mr-2" type="text" name="country_code" :value="old('country_code')" required autocomplete="country_code" placeholder="Country Code" />
-            <x-text-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="old('phone_number')" required autocomplete="phone_number" />
-            <x-input-error :messages="$errors->get('country_code')" class="mt-2" />
-            <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
+        <!-- Phone Number -->
+        <div class="form-group">
+            <label for="phonenumber">Phone Number</label>
+            <input id="country_code" type="text" name="country_code" value="{{ old('country_code') }}" required autocomplete="country_code" placeholder="Country Code">
+            <input id="phone_number" type="text" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number">
+            @error('country_code')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+            @error('phone_number')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" required autocomplete="new-password">
+            @error('password')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div class="form-group">
+            <label for="password_confirmation">Confirm Password</label>
+            <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password">
+            @error('password_confirmation')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+        <!-- Register Button -->
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Register</button>
+        </div>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
+        <!-- Already registered link -->
+        <div class="form-group">
+            <a href="{{ route('login') }}">Already registered?</a>
         </div>
     </form>
-</x-guest-layout>
+</div>
+@endsection

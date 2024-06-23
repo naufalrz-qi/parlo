@@ -18,7 +18,7 @@
 
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/universal.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/component.css') }}">
 </head>
 
 <body>

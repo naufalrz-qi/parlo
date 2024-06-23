@@ -21,7 +21,7 @@
                 @endforeach
             </ul>
         </div>
-
+        <br>
         <a href="{{ route('home') }}" class="btn btn-primary">Back to Dashboard</a>
     </div>
 @endsection

@@ -15,4 +15,11 @@ class HomeUserController extends Controller
 
         return view('user.home', compact('destinations', 'facilities'));
     }
+
+    public function tfa()
+    {
+        return view('user.settings.tfa-activation');
+    }
+
+
 }

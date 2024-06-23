@@ -8,7 +8,17 @@
         <a href="{{ route('destinations.universal') }}">Destinations</a>
         <a href="#">Facilities</a>
         <a href="#">History</a>
+        <p style=>User</p>
 
+        <hr>
+        <a onclick="toggleDropdown('users')" href="#">Settings</a>
+        <div class="dp" id="dp-users">
+            <a href="#">Edit Profile</a>
+            <a href="#">Change Password</a>
+            <a href="{{ route('tfa.settings') }}">Two Factor Authentication</a>
+        </div>
+
+<hr>
         <div id="auth-nav">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

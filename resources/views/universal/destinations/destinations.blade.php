@@ -13,7 +13,7 @@
                     <p class="card-text">{{ $destination->description }}</p>
                     <p class="card-location"><strong>Location:</strong> {{ $destination->location }}</p>
                     <p class="card-price"><strong>Price:</strong> Rp{{ number_format($destination->price, 2, ',', '.') }}</p>
-                    <a href="#" class="btn btn-order">Order</a>
+                    <a href="{{ route('bookings.create', $destination->id) }}" class="btn btn-order">Booking</a>
                 </div>
             </div>
         @endforeach
