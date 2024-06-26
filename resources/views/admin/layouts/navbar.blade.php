@@ -1,7 +1,7 @@
-<nav class="navbar">
-    <a href="#" class="navbar-logo">Parlo</a>
+<nav class="navbarC">
+    <a href="#" class="navbarC-logo">Parlo</a>
 
-    <div class="navbar-nav">
+    <div class="navbarC-nav">
         <p style=>Dashboard</p>
         <hr>
         <a href="{{ route('admin.dashboard') }}">Dashboard</a>
@@ -35,19 +35,22 @@
             <a href="{{ route('users.create') }}">Add User</a>
             <a href="{{ route('users.index') }}">View User</a>
         </div>
-        <div id="auth-nav">
+        <p style=>Settings</p>
+        <hr>
+        <a href="{{ route('tfa.settings') }}">Two Factor Authentication</a>
+        <div id="auth-nav" class="my-4 d-grid justify-content-center text-align-center">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <a type="submit" href="{{ route('logout') }}"
+                <button type="submit" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     this.closest('form').submit();"
-                    class="btn-secondary">Logout</a>
+                    class="btn btn-danger">Logout</button>
             </form>
         </div>
 
     </div>
 
-    <div class="navbar-extra">
+    <div class="navbarC-extra">
         <a href="#" class="menu" >{{ Auth::user()->name }}</a>
         <a href="#" class="menu" id="hamburger-menu"><i data-feather="menu"></i></a>
     </div>

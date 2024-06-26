@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Admin Dashboard</h1>
+    <h1 class="mb-5">Admin Dashboard</h1>
     <div class="stats">
         <div class="stat-item">
             <h2>Total Destinations</h2>
@@ -43,7 +43,7 @@
             </ul>
         </div>
     </div>
-    <div class="latest-transactions">
+    <div class="latest-transactions mt-5">
         <h2>Today's Transactions</h2>
         <ul>
             @foreach($todayTransactions as $transaction)

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('location');
-            $table->string('iframe')->nullable();
+            $table->text('iframe')->nullable();
             $table->string('image')->nullable();
             $table->bigInteger('price');
             $table->timestamps();

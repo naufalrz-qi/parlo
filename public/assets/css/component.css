@@ -1,0 +1,199 @@
+:root {
+    --text-dark-primary: #03291f;
+    --text-light-primary: #f3fffc;
+    --bg: #eff6f7;
+    --hoverbtn: #14a07d70;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --primary: #A1C181;
+    --primary-a: #619b8a15;
+    --secondary: #233D4D;
+    --tertiary: #FCCA46;
+    --quaternary: #619b8a;
+    --quinary: #FE7F2D;
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+
+
+form {
+    width: 80%;
+}
+
+.container {
+    margin: 0rem 1.4rem 1.4rem 1.4rem;
+    padding: 4rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.label-checkbox {
+    display: inline-flex;
+    align-items: center;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.text-red-500 {
+    color: var(--error-color);
+}
+
+.text-green-600 {
+    color: var(--success-color);
+}
+
+.text-blue-500 {
+    color: #007bff;
+}
+
+.form-actions {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-actions a {
+    text-decoration: none;
+    color: var(--secondary);
+    transition: color 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.form-actions a:hover {
+    color: var(--primary);
+}
+
+
+/* Opening Hours */
+.opening-hours {
+    display: flex;
+    align-items: center;
+}
+
+.opening-hours select {
+    flex: 1;
+    margin-right: 0.5rem;
+}
+
+.opening-hours span {
+    margin: 0 0.5rem;
+    font-weight: bold;
+}
+
+/* Dashboard */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    flex: 1;
+    margin: 0 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-item h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.stat-item p {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+
+.latest-items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.latest-destinations,
+.latest-facilities {
+    flex: 1;
+    margin: 0 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.destination-details {
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+}
+
+.latest-destinations h2,
+.latest-facilities h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.latest-destinations ul,
+.latest-facilities ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.latest-destinations li,
+.latest-facilities li {
+    background-color: #ffffff;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Styles */
+.image-container {
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 5%;
+}
+
+.destination-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+@media (max-width: 758px) {
+    .table-responsive {
+        width: 100%;
+        max-width: 758px;
+    }
+}
+
+@media (max-width: 450px) {
+
+
+
+    .container {
+        align-items: start;
+        justify-content: start;
+    }
+
+    .table-responsive {
+        width: 100%;
+        max-width: 450px;
+    }
+}

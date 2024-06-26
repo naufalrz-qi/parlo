@@ -20,7 +20,7 @@
                 @endforeach
             </ul>
         </div>
-
+        <br>
         <button id="pay-button">Pay Now</button>
 
         <script type="text/javascript"

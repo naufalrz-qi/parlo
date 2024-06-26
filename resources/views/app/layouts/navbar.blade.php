@@ -1,7 +1,8 @@
-<nav class="navbar">
-    <a href="#" class="navbar-logo">Parlo</a>
+<nav class="navbarC">
+    <a href="#" class="navbarC-logo">Parlo</a>
 
-    <div class="navbar-nav">
+
+    <div class="navbarC-nav">
         <a href="/#home">Home</a>
         <a href="#about">About</a>
         <a href="#destinations">Destinations</a>
@@ -10,37 +11,37 @@
             <div id="auth-nav">
                 @auth
                     @if (Auth::user()->role == 'admin')
-                        <a href="{{ route('admin.dashboard') }}" class="btn-secondary">Dashboard</a>
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Dashboard</a>
                     @elseif (Auth::user()->role == 'employee')
-                        <a href="{{ route('employee.dashboard') }}" class="btn-secondary">Dashboard</a>
+                        <a href="{{ route('employee.dashboard') }}" class="btn btn-secondary">Dashboard</a>
                     @else
-                        <a href="{{ route('home') }}" class="btn-secondary">Dashboard</a>
+                        <a href="{{ route('home') }}" class="btn btn-secondary">Dashboard</a>
                     @endif
                 @else
-                    <a href="{{ route('login') }}" class="btn-primary">Login</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="btn-secondary">Register</a>
+                        <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
                     @endif
                 @endauth
             </div>
         @endif
     </div>
 
-    <div class="navbar-extra">
+    <div class="navbarC-extra">
         @if (Route::has('login'))
             <div id="auth-extra">
                 @auth
                     @if (Auth::user()->role == 'admin')
-                        <a href="{{ route('admin.dashboard') }}" class="btn-secondary">Dashboard</a>
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Dashboard</a>
                     @elseif (Auth::user()->role == 'employee')
-                        <a href="{{ route('employee.dashboard') }}" class="btn-secondary">Dashboard</a>
+                        <a href="{{ route('employee.dashboard') }}" class="btn btn-secondary">Dashboard</a>
                     @else
-                        <a href="{{ route('home') }}" class="btn-secondary">Dashboard</a>
+                        <a href="{{ route('home') }}" class="btn btn-secondary">Dashboard</a>
                     @endif
                 @else
-                    <a href="{{ route('login') }}" class="btn-primary">Login</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="btn-secondary">Register</a>
+                        <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
                     @endif
                 @endauth
             </div>

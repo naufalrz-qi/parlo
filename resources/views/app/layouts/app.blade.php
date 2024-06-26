@@ -18,7 +18,11 @@
 
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/universal.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/component.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}">
+
+    @yield('style')
 </head>
 
 <body>
