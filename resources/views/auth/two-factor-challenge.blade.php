@@ -25,7 +25,7 @@
 
                         <div class="mb-3 row">
                             <div class="col-8 offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     {{ __('Submit') }}
                                 </button>
                                 <div class="btn btn-link" onclick='displayForm(this, "recovery_form")'>
@@ -59,7 +59,7 @@
 
                         <div class="mb-3 row">
                             <div class="col-8 offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     {{ __('Submit') }}
                                 </button>
                                 <div class="btn btn-link" onclick='displayForm(this, "secretCodeForm")'>

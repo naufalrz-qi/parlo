@@ -40,16 +40,16 @@
             Ullam, eveniet modi? Architecto!
         </p>
 
-        <div class="row">
+        <div class="d-flex">
 
-            @foreach($destinations as $destination)
-            <div class="destinations-card">
-                <img class="card-img" src="{{ asset('assets/img/destinations/' . $destination->image) }}" alt="{{ $destination->name }}" >
-                <h3 class="destination-card-title">{{ $destination->name }}</h3>
-                <p class="destination-card-price">Rp{{ number_format($destination->price, 2, ',', '.') }}</p>
+            @foreach ($destinations as $destination)
+                <div class="destinations-card">
+                    <img src="{{ asset('assets/img/destinations/' . $destination->image) }}" alt="{{ $destination->name }}">
+                    <h3 class="destination-card-title">{{ $destination->name }}</h3>
+                    <p class="destination-card-price">Rp{{ number_format($destination->price, 2, ',', '.') }}</p>
 
-            </div>
-        @endforeach
+                </div>
+            @endforeach
 
         </div>
         <div class="button">
@@ -69,28 +69,36 @@
             Ullam, eveniet modi? Architecto!
         </p>
 
-        <div class="row">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.0500806965515!2d116.11370507422028!3d-8.591183687217205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdbf5c2462a5ed%3A0xbc0f44d683d529b1!2sUniversitas%20Bumigora!5e0!3m2!1sid!2sid!4v1715907476075!5m2!1sid!2sid"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+        <div class="container p-0 d-block">
+            <div class="row">
+                <div class="col-md-5">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.0500806965515!2d116.11370507422028!3d-8.591183687217205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdbf5c2462a5ed%3A0xbc0f44d683d529b1!2sUniversitas%20Bumigora!5e0!3m2!1sid!2sid!4v1715907476075!5m2!1sid!2sid"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
 
-            <form action="">
-                <div class="input-group">
-                    <i data-feather="user"></i>
-                    <input type="text" placeholder="Nama">
                 </div>
-                <div class="input-group">
-                    <i data-feather="mail"></i>
-                    <input type="email" placeholder="Email">
-                </div>
-                <div class="input-group">
-                    <i data-feather="phone"></i>
-                    <input type="text" placeholder="Phone Number">
+                <div class="col-md-7 py-5">
+                    <form action="">
+                        <div class="form-group mb-3 d-flex">
+                            <i data-feather="user"></i>
+                            <input class="form-control" type="text" placeholder="Nama">
+                        </div>
+                        <div class="form-group mb-3 d-flex">
+                            <i data-feather="mail"></i>
+                            <input class="form-control" type="email" placeholder="Email">
+                        </div>
+                        <div class="form-group mb-3 d-flex">
+                            <i data-feather="phone"></i>
+                            <input class="form-control" type="text" placeholder="Phone Number">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
 
-                <button type="submit" class="btn-primary">Send Message</button>
-            </form>
+            </div>
         </div>
+
     </section>
     {{-- contact end --}}
 @endsection

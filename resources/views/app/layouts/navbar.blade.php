@@ -1,8 +1,8 @@
-<nav class="navbar">
-    <a href="#" class="navbar-logo">Parlo</a>
+<nav class="navbarC">
+    <a href="#" class="navbarC-logo">Parlo</a>
 
 
-    <div class="navbar-nav">
+    <div class="navbarC-nav">
         <a href="/#home">Home</a>
         <a href="#about">About</a>
         <a href="#destinations">Destinations</a>
@@ -27,7 +27,7 @@
         @endif
     </div>
 
-    <div class="navbar-extra">
+    <div class="navbarC-extra">
         @if (Route::has('login'))
             <div id="auth-extra">
                 @auth

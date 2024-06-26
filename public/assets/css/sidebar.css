@@ -1,9 +1,11 @@
 :root {
-    --primary: #14a07d;
-    --secondary: #4b6e79;
-    --text-dark-primary: #03291f;
-    --text-light-primary: #f3fffc;
-    --bg: #eff6f7;
+    --primary: #619b8a;
+    --primary-a: #619b8a15;
+    --secondary: #233D4D;
+    --tertiary: #FCCA46;
+    --quaternary: #A1C181;
+    --quinary: #FE7F2D;
+    --quinary-a: #fe812d15;
 }
 
 html {
@@ -14,7 +16,7 @@ hr {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(128, 128, 128, 0.75), rgba(128, 128, 128, 0.75), rgba(128, 128, 128, 0.75));
-    margin:0rem 2rem 0rem 2rem;
+    margin:0;
 
 }
 
@@ -29,128 +31,138 @@ hr {
 }
 
 body {
+    padding-top: 8rem;
     font-family: "Montserrat", sans-serif;
-    background-color: var(--bg);
-    color: var(--text-dark-primary);
 }
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary) 50%, white 50%);
+    z-index: -1; /* Ensures the background is behind all content */
+}
+/* navbarC */
 
-/* Navbar */
-
-.navbar {
+.navbarC {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 5%;
     margin: 1rem;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: white;
     border-radius: 1.2rem;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
-.navbar .navbar-nav {
+.navbarC .navbarC-nav {
     position: absolute;
     top: 100%;
     right: -100%;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: white;
     width: 24rem;
-    height: 80vh;
+    height: 70vh;
     transition: 0.3s;
     overflow-y: auto; /* Enable vertical scrolling */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
-.navbar .navbar-nav p {
-    font-size:1rem;
-    color:gray;
+.navbarC .navbarC-nav p {
+    font-size:1.2rem;
+    font-weight: 700;
     margin:1rem 1.5rem 1rem 1.5rem;
 }
 
-.navbar .navbar-nav.active {
+.navbarC .navbarC-nav.active {
     margin-top: 0.5rem;
     border-radius: 10px;
     right: 0;
 }
 
 
-.navbar .navbar-logo {
+.navbarC .navbarC-logo {
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--primary);
     font-style: italic;
 }
-.navbar .navbar-nav a {
-    color: var(--text-dark-primary);
+.navbarC .navbarC-nav a {
+    color: var(--secondary);
     display: block;
-    margin: 1rem;
     padding: 0.5rem;
+    padding-left: 2.75rem;
     font-size: 1rem;
 }
 
 
-.navbar .navbar-nav a:hover::after {
+.navbarC .navbarC-nav a:hover::after {
     transform: scaleX(0.2);
 }
 
-.navbar .navbar-nav .dp {
-    padding: 0 2.5rem;
-}
+.navbarC .navbarC-nav .dp a {
+    padding-left: 3.25rem;
+    background-color: var(--quinary-a);
 
-.navbar .navbar-nav .dp a {
-    margin: 0rem;
 }
 
 
-.navbar .navbar-nav #dp-destinations {
+.navbarC .navbarC-nav #dp-destinations {
     display: none;
-    background-color: #03291f15;
+
 }
-.navbar .navbar-nav #dp-facilities {
+.navbarC .navbarC-nav #dp-facilities {
     display: none;
-    background-color: #03291f15;
+
 }
-.navbar .navbar-nav #dp-reviews {
+.navbarC .navbarC-nav #dp-reviews {
     display: none;
-    background-color: #03291f15;
+
 }
-.navbar .navbar-nav #dp-reports {
+.navbarC .navbarC-nav #dp-reports {
     display: none;
-    background-color: #03291f15;
+
 }
-.navbar .navbar-nav #dp-users {
+.navbarC .navbarC-nav #dp-users {
     display: none;
-    background-color: #03291f15;
+
 }
 
-.navbar .navbar-nav a:hover {
-    color: var(--text-dark-primary);
+.navbarC .navbarC-nav a:hover {
+    color: var(--primary);
 }
 
-.navbar .navbar-nav a::after {
+.navbarC .navbarC-nav a::after {
     content: "";
     display: block;
-    border-bottom: 0.1rem solid var(--primary);
+    border-bottom: 0.1rem solid var(--quinary);
     transform-origin: 0 0;
     transform: scaleX(0);
     transition: 0.2s linear;
 }
 
-.navbar .navbar-extra {
+.navbarC .navbarC-extra {
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
 }
 
-.navbar .navbar-extra .menu {
-    color: var(--text-dark-primary);
+.navbarC .navbarC-extra .menu {
+    color: var(--secondary);
     margin: 0 0.5rem;
 }
 
-.navbar .navbar-extra .menu:hover {
-    color: var(--primary);
+.navbarC .navbarC-extra .menu:hover {
+    color: var(--secondary);
 }
 
 #hamburger-menu {
