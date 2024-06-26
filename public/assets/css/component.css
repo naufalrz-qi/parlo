@@ -5,11 +5,11 @@
     --hoverbtn: #14a07d70;
     --error-color: #dc3545;
     --success-color: #28a745;
-    --primary: #619b8a;
+    --primary: #A1C181;
     --primary-a: #619b8a15;
     --secondary: #233D4D;
     --tertiary: #FCCA46;
-    --quaternary: #A1C181;
+    --quaternary: #619b8a;
     --quinary: #FE7F2D;
 }
 
@@ -18,6 +18,8 @@ input[type="checkbox"] {
     height: 16px;
     margin: 0;
 }
+
+
 
 form {
     width: 80%;
@@ -76,23 +78,6 @@ form {
 }
 
 
-/* Card Styles */
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-
-.card-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5%;
-}
-
 /* Opening Hours */
 .opening-hours {
     display: flex;
@@ -133,8 +118,9 @@ form {
 .stat-item p {
     font-size: 1.25rem;
     font-weight: bold;
-    color: var(--quinary);
+    color: var(--primary);
 }
+
 
 .latest-items {
     display: flex;
