@@ -19,12 +19,6 @@ input[type="checkbox"] {
     margin: 0;
 }
 
-
-
-form {
-    width: 80%;
-}
-
 .container {
     margin: 0rem 1.4rem 1.4rem 1.4rem;
     padding: 4rem;
@@ -35,17 +29,6 @@ form {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
-.label-checkbox {
-    display: inline-flex;
-    align-items: center;
-}
-
-.form-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
 
 .text-red-500 {
@@ -59,24 +42,6 @@ form {
 .text-blue-500 {
     color: #007bff;
 }
-
-.form-actions {
-    display: grid;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.form-actions a {
-    text-decoration: none;
-    color: var(--secondary);
-    transition: color 0.3s ease;
-    margin-bottom: 1rem;
-}
-
-.form-actions a:hover {
-    color: var(--primary);
-}
-
 
 /* Opening Hours */
 .opening-hours {

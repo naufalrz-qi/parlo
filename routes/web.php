@@ -24,6 +24,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/destinations', [DestinationsController::class, 'showDestinations'])->name('destinations.universal');
+Route::get('/facilities/all/', [FacilityController::class, 'univFacilities'])->name('facilities.universal');
+Route::get('/destinations/{destination}/detail', [DestinationsController::class, 'show'])->name('show.destinations');
+
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -53,7 +56,6 @@ Route::middleware(['auth'])->group(function () {
             Route::post('destinations/store', [DestinationsController::class, 'store'])->name('store.destinations');
             Route::get('destinations/{destination}/edit', [DestinationsController::class, 'edit'])->name('edit.destinations');
             Route::put('destinations/{destination}/update', [DestinationsController::class, 'update'])->name('update.destinations');
-            Route::get('destinations/{destination}/show', [DestinationsController::class, 'show'])->name('show.destinations');
             Route::delete('destinations/{destination}/destroy', [DestinationsController::class, 'destroy'])->name('destroy.destinations');
         });
     });

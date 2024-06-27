@@ -13,8 +13,9 @@ class HomeUserController extends Controller
 {
     public function index()
     {
-        $destinations = Destinations::all();
-        $facilities = Facility::all();
+       // Limit the number of destinations and facilities to 6
+    $destinations = Destinations::take(6)->get();
+    $facilities = Facility::take(6)->get();
 
 
         if(Auth::user()->role === 'user'){

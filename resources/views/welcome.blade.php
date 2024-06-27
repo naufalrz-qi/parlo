@@ -97,7 +97,7 @@
                         class="map"></iframe>
 
                 </div>
-                <div class="col-md-7 py-5">
+                <div class="col-md-7 p-5">
                     <form action="">
                         <div class="form-group mb-3 d-flex align-items-center">
                             <i data-feather="user" class="me-2"></i>

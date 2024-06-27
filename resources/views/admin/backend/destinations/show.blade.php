@@ -1,36 +1,80 @@
-@extends('admin.layouts.app')
+@extends($layout)
 @section('style')
+<style>
+        .card {
+       background-color: white;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+       border: none;
+    }
 
+    .btn-primary{
+        color: white;
+        background-color: var(--quinary);
+        border: var(--quinary);
+        font-weight: 700;
+    }
+</style>
 @endsection
 @section('content')
     <div class="container">
         <h1>{{ $destination->name }}</h1>
-        <div class="destination-details">
-            <p class="card-text">{{ $destination->description }}</p>
-            <p class="card-text"><strong>Location:</strong> {{ $destination->location }}</p>
-            <p class="card-text"><strong>iframe:</strong> {{ $destination->iframe }}</p>
-            <p class="card-text"><strong>Price:</strong> Rp{{ number_format($destination->price, 2, ',', '.') }}</p>
-            <p class="card-text"><strong>Created At:</strong> {{ $destination->created_at->format('d M Y') }}</p>
-            <p class="card-text"><strong>Updated At:</strong> {{ $destination->updated_at->format('d M Y') }}</p>
+        <div class="row">
             @if ($destination->image)
-                <div class="image-container">
-                    <img src="{{ asset('assets/img/destinations/' . $destination->image) }}"
-                        alt="{{ $destination->name }}" class="destination-image">
+                <div class="col-md-4">
+                    <img src="{{ asset('assets/img/destinations/' . $destination->image) }}" alt="{{ $destination->name }}"
+                        class="img-fluid rounded">
                 </div>
             @else
-                <p>No image available</p>
+                <div class="col-md-4">
+                    <p>No image available</p>
+                </div>
             @endif
+            <div class="col-md-8">
+                <p><strong>{{ $destination->location }}</strong></p>
+                <p>{{ $destination->description }}</p>
+                <p class="fs-5"><strong>Rp{{ number_format($destination->price, 2, ',', '.') }}</strong></p>
 
-            <a href="{{ route('edit.destinations', $destination->id) }}" class="btn btn-warning">Edit</a>
-            <form action="{{ route('destroy.destinations', $destination->id) }}" method="POST"
-                style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger"
-                    onclick="return confirm('Are you sure you want to delete this destination?')">Delete</button>
-            </form>
+                @if (auth()->user()->role === 'admin')
+                    <a href="{{ route('edit.destinations', $destination->id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('destroy.destinations', $destination->id) }}" method="POST"
+                        style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this destination?')">Delete</button>
+                    </form>
+                    @elseif (auth()->user()->role === 'user')
+                    <a href="{{ route('bookings.create', $destination->id) }}" class="btn btn-primary">Book Now</a>
+                @endif
+
+            </div>
         </div>
-
-
     </div>
+    <div class="container">
+        <h2>Facilities</h2>
+        @if ($facilities->isEmpty())
+            <p>No facilities available for this destination.</p>
+        @else
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @foreach ($facilities as $facility)
+                    <div class="col">
+                        <div class="card h-100 bg-white">
+                            <img src="{{ asset('assets/img/facilities/' . $facility->image) }}"
+                                alt="{{ $facility->name }}" class="card-img">
+                            <div class="card-body">
+                                <small>{{ $facility->type }}</small>
+                                <h3 class="card-title">{{ $facility->name }}</h3>
+                                <p class="card-location"><strong>{{ $facility->location }}</strong></p>
+                                <p class="card-text">{{ $facility->description }}</p>
+                                <p class="card-price fs-5">
+                                    <strong>Rp{{ number_format($facility->price, 2, ',', '.') }}</strong></p>
+                                {{-- <a href="{{ route('order.facility', $facility->id) }}" class="btn btn-order">Order</a> --}}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
+
 @endsection

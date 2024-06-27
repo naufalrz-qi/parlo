@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class FacilityController extends Controller
 {
+    public function univFacilities()
+    {
+        $facilities = Facility::all();
+
+        return view('universal.facilities.index', compact('facilities'));
+    }
     public function index()
     {
         if (Auth::check()) {

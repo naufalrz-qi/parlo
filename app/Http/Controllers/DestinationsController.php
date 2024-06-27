@@ -21,7 +21,7 @@ class DestinationsController extends Controller
                 $layout = 'user.layouts.app';
             }
         }
-        return view('universal.destinations.destinations', compact('destinations', 'layout'));
+        return view('universal.destinations.index', compact('destinations', 'layout'));
     }
     public function index()
     {
@@ -155,9 +155,10 @@ public function destroy($id)
 
 public function show($id)
 {
-    $destination = Destinations::findOrFail($id); // Mengambil destinasi berdasarkan ID
+    $destination = Destinations::with('facilities')->findOrFail($id);
+    $facilities = $destination->facilities;
 
-    return view('admin.backend.destinations.show', compact('destination')); // Menampilkan view show dengan data destinasi
+    return view('admin.backend.destinations.show', compact('destination', 'facilities')); // Menampilkan view show dengan data destinasi
 }
 
 
