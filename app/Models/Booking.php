@@ -10,6 +10,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Booking extends Model
 {
     use HasFactory;
+
+    public $incrementing = false; // Non-incrementing or non-numeric primary key
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Set ID saat model sedang dibuat
+        static::creating(function ($model) {
+            $model->id = 'b-' . now()->format('dmyHis');
+        });
+    }
+    
     protected $guarded = [];
     public function user(): BelongsTo
 

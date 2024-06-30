@@ -15,7 +15,6 @@
                     <th>End Time</th>
                     <th>Total Price</th>
                     <th>Status</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,20 +28,11 @@
                                 {{ $facility->name }}<br>
                             @endforeach
                         </td>
-                        <td>{{ $booking->booking_date }}</td>
+                        <td>{{ $booking->created_at }}</td>
                         <td>{{ $booking->start_time }}</td>
                         <td>{{ $booking->end_time }}</td>
                         <td>Rp{{ number_format($booking->total_price, 2, ',', '.') }}</td>
                         <td>{{ $booking->status }}</td>
-                        <td>
-                            <a href="{{ route('bookings.show', $booking->id) }}" class="btn btn-primary">View</a>
-                            <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-secondary">Edit</a>
-                            <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>

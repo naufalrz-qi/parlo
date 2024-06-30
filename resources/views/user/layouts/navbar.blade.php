@@ -6,7 +6,7 @@
         <hr>
         <a href="{{ route('home') }}">Home</a>
         <a href="{{ route('destinations.universal') }}">Destinations</a>
-        <a href="#">Facilities</a>
+        <a href="{{ route('facilities.universal') }}">Facilities</a>
         <a href="#">History</a>
         <p style=>User</p>
 

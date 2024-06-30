@@ -1,19 +1,32 @@
 @extends($layout)
 @section('style')
-<style>
+    <style>
         .card {
-       background-color: white;
-       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-       border: none;
-    }
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
 
-    .btn-primary{
-        color: white;
-        background-color: var(--quinary);
-        border: var(--quinary);
-        font-weight: 700;
-    }
-</style>
+        .btn-primary {
+            color: white;
+            background-color: var(--quinary);
+            border: var(--quinary);
+            font-weight: 700;
+        }
+
+        .map-container {
+
+            width: 100%;
+            height: 100
+        }
+
+        .map-container iframe {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 @endsection
 @section('content')
     <div class="container">
@@ -43,11 +56,19 @@
                         <button type="submit" class="btn btn-danger"
                             onclick="return confirm('Are you sure you want to delete this destination?')">Delete</button>
                     </form>
-                    @elseif (auth()->user()->role === 'user')
+                @elseif (auth()->user()->role === 'user')
                     <a href="{{ route('bookings.create', $destination->id) }}" class="btn btn-primary">Book Now</a>
                 @endif
 
             </div>
+        </div>
+
+    </div>
+
+    <div class="container mt-5">
+        <h2>Location Map</h2>
+        <div class="map-container">
+            <iframe src="{{ $destination->iframe }}"></iframe>
         </div>
     </div>
     <div class="container">
@@ -67,7 +88,8 @@
                                 <p class="card-location"><strong>{{ $facility->location }}</strong></p>
                                 <p class="card-text">{{ $facility->description }}</p>
                                 <p class="card-price fs-5">
-                                    <strong>Rp{{ number_format($facility->price, 2, ',', '.') }}</strong></p>
+                                    <strong>Rp{{ number_format($facility->price, 2, ',', '.') }}</strong>
+                                </p>
                                 {{-- <a href="{{ route('order.facility', $facility->id) }}" class="btn btn-order">Order</a> --}}
                             </div>
                         </div>

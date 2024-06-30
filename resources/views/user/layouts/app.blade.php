@@ -26,7 +26,7 @@
 
 <body>
     {{-- navbar start --}}
-    @extends('user.layouts.navbar')
+    @include('user.layouts.navbar')
     {{-- navbar end --}}
 
     {{-- Hero --}}
@@ -34,7 +34,7 @@
     {{-- Hero end --}}
 
 
-    @extends('user.layouts.footer')
+    @include('user.layouts.footer')
     {{-- icons js --}}
     <script>
         feather.replace();

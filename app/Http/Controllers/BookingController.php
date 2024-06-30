@@ -25,72 +25,43 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'destination_id' => 'required|exists:destinations,id',
-            'booking_date' => 'required|date',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i',
-            'facilities' => 'array|exists:facilities,id',
-            'total_price' => 'required|numeric',
-        ]); 
+            'start_time' => 'required|date|date_format:Y-m-d\TH:i',
+            'end_time' => 'required|date|date_format:Y-m-d\TH:i|after:start_time',
+            'facilities' => 'nullable|array|exists:facilities,id',
+        ]);
 
         $booking = new Booking();
         $booking->user_id = auth()->user()->id;
         $booking->destination_id = $request->input('destination_id');
-        $booking->booking_date = $request->input('booking_date');
         $booking->start_time = $request->input('start_time');
         $booking->end_time = $request->input('end_time');
-        $booking->total_price = $request->input('total_price');
+
+        $destination = Destinations::find($request->input('destination_id'));
+        $totalPrice = $destination->price; // calculate total price
+
+        if ($request->has('facilities')) {
+            $facilities = Facility::whereIn('id', $request->input('facilities'))->get();
+            foreach ($facilities as $facility) {
+                $totalPrice += $facility->price;
+            }
+        }
+
+        $booking->total_price = $totalPrice;
         $booking->status = 'pending';
         $booking->save();
 
-        $facilities = $request->input('facilities');
-        $booking->facilities()->sync($facilities);
+        if ($request->has('facilities')) {
+            $booking->facilities()->sync($request->input('facilities'));
+        }
 
-        if (auth()->user()->role == 'user') {
+        if (Auth::user()->role == 'user') {
             return redirect()->route('payment.show', $booking->id);
         }
 
         return redirect()->route('bookings.index');
     }
 
-
-
-    public function show(Booking $booking)
-    {
-        return view('bookings.show', compact('booking'));
-    }
-
-    public function edit(Booking $booking)
-    {
-        $destinations = Destinations::all();
-        $facilities = Facility::all();
-        return view('bookings.edit', compact('booking', 'destinations', 'facilities'));
-    }
-
-    public function update(Request $request, Booking $booking)
-    {
-        $request->validate([
-            'destination_id' => 'required|exists:destinations,id',
-            'booking_date' => 'required|date',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i',
-            'total_price' => 'required|numeric',
-            'status' => 'required|in:pending,approved,rejected',
-            'facilities' => 'array|exists:facilities,id'
-        ]);
-
-        $booking->update($request->only('destination_id', 'booking_date', 'start_time', 'end_time', 'total_price', 'status'));
-
-        $facilities = $request->input('facilities', []);
-        $booking->facilities()->sync($facilities);
-
-        return redirect()->route('bookings.index');
-    }
-
-    public function destroy(Booking $booking)
-    {
-        $booking->delete();
-        return redirect()->route('bookings.index');
-    }
 }
