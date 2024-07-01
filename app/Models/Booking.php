@@ -22,7 +22,7 @@ class Booking extends Model
             $model->id = 'b-' . now()->format('dmyHis');
         });
     }
-    
+
     protected $guarded = [];
     public function user(): BelongsTo
 
@@ -44,7 +44,7 @@ class Booking extends Model
 
     {
 
-        return $this->belongsToMany(Facility::class, 'booking_facility');
+        return $this->belongsToMany(Facility::class, 'booking_facility', 'booking_id', 'facility_id');
 
     }
 }

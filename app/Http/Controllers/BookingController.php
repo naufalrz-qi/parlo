@@ -7,6 +7,7 @@ use App\Models\Destinations;
 use App\Models\Facility;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -43,18 +44,22 @@ class BookingController extends Controller
         $totalPrice = $destination->price; // calculate total price
 
         if ($request->has('facilities')) {
-            $facilities = Facility::whereIn('id', $request->input('facilities'))->get();
-            foreach ($facilities as $facility) {
-                $totalPrice += $facility->price;
+            $facilitiesStringArray = $request->input('facilities');
+            $facilitiesString = implode(',', $facilitiesStringArray);
+            $facilityIds = explode(',', $facilitiesString);
+            $facilityIds = array_map('intval', $facilityIds);
+            $totalPrice = Facility::whereIn('id', $facilityIds)->sum('price');
+            $booking->total_price = $totalPrice;
+            $booking->status = 'pending';
+            $booking->save();
+            foreach ($facilityIds as $facilityId) {
+                DB::table('booking_facility')->insert([
+                    'booking_id' => $booking->id,
+                    'facility_id' => $facilityId,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
             }
-        }
-
-        $booking->total_price = $totalPrice;
-        $booking->status = 'pending';
-        $booking->save();
-
-        if ($request->has('facilities')) {
-            $booking->facilities()->sync($request->input('facilities'));
         }
 
         if (Auth::user()->role == 'user') {
