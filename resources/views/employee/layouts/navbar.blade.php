@@ -13,6 +13,7 @@
             <a href="{{ route('facilities.index') }}">View Facilities</a>
         </div>
         <a href="{{ route('bookings.index') }}">Booking Transactions</a>
+        <a href="{{ route('destinations.reviews') }}">Reviews</a>
         <p style=>User</p>
 
         <hr>

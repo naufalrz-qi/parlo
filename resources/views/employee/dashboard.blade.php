@@ -5,7 +5,7 @@
     <h1>Employee Dashboard</h1>
 
     <div class="destination-info">
-        <h2>Destination: {{ $destination->name }}</h2>
+        <h2>    {{ $destination->name }}</h2>
         <p>{{ $destination->description }}</p>
     </div>
 
@@ -14,10 +14,10 @@
         <p>Total Facilities: {{ $totalFacilities }}</p>
     </div>
 
-    <div class="latest-facilities">
+    <div class="latest-facilities table-responsive">
         <h2>Latest Facilities</h2>
-        <table>
-            <thead>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
                 <tr>
                     <th>No</th>
                     <th>Name</th>
@@ -43,14 +43,14 @@
                         <td>{{ $facility->type }}</td>
                         <td>{{ $facility->price }}</td>
                         <td>
-                            <img src="{{ asset('assets/img/facilities/' . $facility->image) }}" alt="{{ $facility->name }}" height="50">
+                            <img src="{{ asset('assets/img/facilities/' . $facility->image) }}" alt="{{ $facility->name }}" width="200px" class="img-fluid">
                         </td>
                         <td>
-                            <a href="{{ route('facilities.edit', $facility->id) }}" class="btn btn-info">Edit</a>
+                            <a href="{{ route('facilities.edit', $facility->id) }}" class="btn btn-info btn-sm">Edit</a>
                             <form action="{{ route('facilities.destroy', $facility->id) }}" method="POST" style="display: inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this facility?');">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this facility?');">Delete</button>
                             </form>
                         </td>
                     </tr>

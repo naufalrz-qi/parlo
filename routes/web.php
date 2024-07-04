@@ -40,6 +40,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['role:employee'])->group(function () {
+        Route::get('/destinations/reviews', [DestinationsController::class, 'reviews'])->name('destinations.reviews');
         Route::get('/dashboard/employee', [EmployeeController::class, 'dashboard'])->name('employee.dashboard');
     });
 

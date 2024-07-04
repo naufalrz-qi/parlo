@@ -164,5 +164,19 @@ public function show($id)
     return view('admin.backend.destinations.show', compact('destination', 'facilities', 'reviews')); // Menampilkan view show dengan data destinasi
 }
 
+public function reviews()
+    {
+        $employee = Auth::user()->employee; // Ambil karyawan yang sedang login
+        $destinations = Destinations::where('id', $employee->destination_id)
+            ->with('reviews.booking.user') // Ambil relasi user melalui booking
+            ->get();
+
+        foreach ($destinations as $destination) {
+            $destination->averageRating = $destination->reviews->avg('rating');
+        }
+
+        return view('employee.destinations.reviews', compact('destinations'));
+    }
+
 
 }

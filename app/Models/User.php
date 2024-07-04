@@ -53,4 +53,6 @@ public function destination()
 {
     return $this->belongsTo(Destinations::class);
 }
+
+
 }

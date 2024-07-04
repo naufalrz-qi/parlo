@@ -13,4 +13,9 @@ class Review extends Model
     {
         return $this->belongsTo(Booking::class, 'booking_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->booking->user(); // Mengambil pengguna melalui relasi booking
+    }
 }
