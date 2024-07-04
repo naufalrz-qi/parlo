@@ -12,25 +12,13 @@
             <a href="{{ route('facilities.create') }}">Add Facility</a>
             <a href="{{ route('facilities.index') }}">View Facilities</a>
         </div>
-        <a onclick="toggleDropdown('reviews')" href="#">Reviews</a>
-        <div class="dp" id="dp-reviews">
-            <a href="#">Add Review</a>
-            <a href="#">View Review</a>
-        </div>
-        <p style=>Reports</p>
-        <hr>
-        <a onclick="toggleDropdown('reports')" href="#">Reports</a>
-        <div class="dp" id="dp-reports">
-            <a href="#">Add Report</a>
-            <a href="#">View Report</a>
-        </div>
+        <a href="{{ route('bookings.index') }}">Booking Transactions</a>
         <p style=>User</p>
 
         <hr>
         <a onclick="toggleDropdown('users')" href="#">Settings</a>
         <div class="dp" id="dp-users">
-            <a href="#">Edit Profile</a>
-            <a href="#">Change Password</a>
+            <a href="{{ route('profile.edit') }}">Edit Profile</a>
             <a href="{{ route('tfa.settings') }}">Two Factor Authentication</a>
         </div>
         <div id="auth-nav" class="my-4 d-grid justify-content-center text-align-center">

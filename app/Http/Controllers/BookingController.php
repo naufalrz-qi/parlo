@@ -13,8 +13,25 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::with('destination', 'facilities')->get();
-        return view('admin.backend.bookings.index', compact('bookings'));
+        $user = Auth::user();
+        $role = $user->role;
+        $destinationName = $role == 'employee' && $user->employee ? $user->employee->destination->name : '';
+        if (Auth::user()->role == 'admin') {
+            $bookings = Booking::with('destination', 'facilities', 'user')->get();
+        } else if (Auth::user()->role == 'employee') {
+            $employee = Auth::user()->employee;
+
+            if (!$employee || !$employee->destination_id) {
+                // Handle case where employee does not have an associated destination
+                $bookings = collect(); // Return an empty collection
+            } else {
+                $bookings = Booking::with('destination', 'facilities', 'user')
+                                    ->where('destination_id', $employee->destination_id)
+                                    ->get();
+            }
+        }
+
+        return view('admin.backend.bookings.index', compact('bookings','destinationName', 'role'));
     }
 
     public function create(Destinations $destination)
@@ -69,4 +86,10 @@ class BookingController extends Controller
         return redirect()->route('bookings.index');
     }
 
+    public function history() {
+        $userId = auth()->user()->id;
+        $bookings = Booking::where('user_id', $userId)->with('destination', 'facilities')->get();
+
+        return view('user.payment.history', compact('bookings'));
+    }
 }

@@ -7,14 +7,13 @@
         <a href="{{ route('home') }}">Home</a>
         <a href="{{ route('destinations.universal') }}">Destinations</a>
         <a href="{{ route('facilities.universal') }}">Facilities</a>
-        <a href="#">History</a>
+        <a href="{{ route('bookings.history') }}">History</a>
         <p style=>User</p>
 
         <hr>
         <a onclick="toggleDropdown('users')" href="#">Settings</a>
         <div class="dp" id="dp-users">
-            <a href="#">Edit Profile</a>
-            <a href="#">Change Password</a>
+            <a href="{{ route('profile.edit') }}">Edit Profile</a>
             <a href="{{ route('tfa.settings') }}">Two Factor Authentication</a>
         </div>
 

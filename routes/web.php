@@ -42,9 +42,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard/employee', [EmployeeController::class, 'dashboard'])->name('employee.dashboard');
     });
 
+    Route::middleware(['role:user'])->group(function () {
+
+        Route::get('/bookings/history', [BookingController::class, 'history'])->name('bookings.history');
+
+    });
     Route::middleware(['role:admin'])->group(function () {
 
-        Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
 
 
         Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
@@ -63,6 +67,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['admin_or_employee'])->group(function () {
     Route::resource('facilities', FacilityController::class);
+    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+
 });
 
 // Booking Routes

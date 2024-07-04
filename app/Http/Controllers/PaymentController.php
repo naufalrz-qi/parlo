@@ -75,7 +75,28 @@ class PaymentController extends Controller
     public function pending($bookingId)
     {
         $booking = Booking::with('destination', 'facilities')->findOrFail($bookingId);
-        return view('user.payment.pending', compact('booking'));
+        Config::$serverKey = config('midtrans.server_key');
+        Config::$isProduction = config('midtrans.is_production');
+        Config::$isSanitized = config('midtrans.is_sanitized');
+        Config::$is3ds = config('midtrans.is_3ds');
+
+        $params = [
+            'transaction_details' => [
+                'order_id' => $booking->id,
+                'gross_amount' => $booking->total_price,
+            ],
+            'customer_details' => [
+                'first_name' => auth()->user()->name,
+                'email' => auth()->user()->email,
+            ],
+        ];
+
+        try {
+            $snapToken = Snap::getSnapToken($params);
+            return view('user.payment.pending', compact('booking', 'snapToken'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to get payment token.');
+        }
     }
 }
 

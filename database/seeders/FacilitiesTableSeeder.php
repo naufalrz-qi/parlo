@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Facility;
 
 class FacilitiesTableSeeder extends Seeder
@@ -13,40 +15,86 @@ class FacilitiesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Facility::create([
-            'name' => 'Mountain Resort',
-            'description' => 'A beautiful mountain resort with stunning views.',
-            'location' => 'Mountain Road, Alpine Town',
-            'opening_hours' => '08:00 - 20:00',
-            'contact_info' => '0123456789',
-            'type' => 'Resort',
-            'price' => 1500000, // Price in IDR
-            'image' => 'default.jpg',
-            'destination_id' => 1 // Make sure you have this destination id in your destinations table
+        DB::table('facilities')->insert([
+            [
+                'name' => 'Surfing Lesson',
+                'description' => 'Pelajaran berselancar untuk pemula dan tingkat lanjut.',
+                'location' => 'Pantai Kuta Lombok',
+                'opening_hours' => '08:00 - 18:00',
+                'contact_info' => '081234567890',
+                'type' => 'Sport',
+                'price' => 300000,
+                'image' => 'default.jpg',
+                'destination_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Camping Area',
+                'description' => 'Tempat berkemah dengan pemandangan Gunung Rinjani.',
+                'location' => 'Gunung Rinjani',
+                'opening_hours' => '24 Jam',
+                'contact_info' => '081234567891',
+                'type' => 'Outdoor',
+                'price' => 200000,
+                'image' => 'default.jpg',
+                'destination_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Snorkeling Equipment Rental',
+                'description' => 'Penyewaan peralatan snorkeling untuk menikmati keindahan bawah laut Gili Trawangan.',
+                'location' => 'Gili Trawangan',
+                'opening_hours' => '08:00 - 17:00',
+                'contact_info' => '081234567892',
+                'type' => 'Water Sport',
+                'price' => 150000,
+                'image' => 'default.jpg',
+                'destination_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Traditional Dance Show',
+                'description' => 'Pertunjukan tari tradisional Sasak di Desa Sade.',
+                'location' => 'Desa Sade',
+                'opening_hours' => '09:00 - 15:00',
+                'contact_info' => '081234567893',
+                'type' => 'Cultural',
+                'price' => 50000,
+                'image' => 'default.jpg',
+                'destination_id' => 4,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Kayak Rental',
+                'description' => 'Penyewaan kayak untuk berkeliling Pantai Tanjung Aan.',
+                'location' => 'Pantai Tanjung Aan',
+                'opening_hours' => '08:00 - 17:00',
+                'contact_info' => '081234567894',
+                'type' => 'Water Sport',
+                'price' => 100000,
+                'image' => 'default.jpg',
+                'destination_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Guided Waterfall Trekking',
+                'description' => 'Pendakian dengan pemandu ke Air Terjun Tiu Kelep.',
+                'location' => 'Air Terjun Tiu Kelep',
+                'opening_hours' => '07:00 - 16:00',
+                'contact_info' => '081234567895',
+                'type' => 'Outdoor',
+                'price' => 250000,
+                'image' => 'default.jpg',
+                'destination_id' => 6,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
 
-        Facility::create([
-            'name' => 'City Museum',
-            'description' => 'A museum showcasing the history of the city.',
-            'location' => 'Main Street, City Center',
-            'opening_hours' => '09:00 - 17:00',
-            'contact_info' => '0987654321',
-            'type' => 'Museum',
-            'price' => 500000, // Price in IDR
-            'image' => 'default.jpg',
-            'destination_id' => 2 // Make sure you have this destination id in your destinations table
-        ]);
-
-        Facility::create([
-            'name' => 'Beach Club',
-            'description' => 'A club on the beach with various amenities.',
-            'location' => 'Beach Road, Seaside Town',
-            'opening_hours' => '10:00 - 22:00',
-            'contact_info' => '0123487654',
-            'type' => 'Club',
-            'price' => 2000000, // Price in IDR
-            'image' => 'default.jpg',
-            'destination_id' => 3 // Make sure you have this destination id in your destinations table
-        ]);
     }
 }

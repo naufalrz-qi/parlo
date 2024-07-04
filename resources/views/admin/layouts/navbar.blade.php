@@ -37,6 +37,7 @@
         </div>
         <p style=>Settings</p>
         <hr>
+        <a href="{{ route('profile.edit') }}">Edit Profile</a>
         <a href="{{ route('tfa.settings') }}">Two Factor Authentication</a>
         <div id="auth-nav" class="my-4 d-grid justify-content-center text-align-center">
             <form method="POST" action="{{ route('logout') }}">
