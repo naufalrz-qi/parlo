@@ -14,7 +14,10 @@ class HomeUserController extends Controller
     public function index()
     {
        // Limit the number of destinations and facilities to 6
-    $destinations = Destinations::take(6)->get();
+    $destinations = Destinations::with('reviews')->take(6)->get();
+    foreach ($destinations as $destination) {
+        $destination['averageRating'] = $destination->reviews->avg('rating');
+    }
     $facilities = Facility::take(6)->get();
 
 

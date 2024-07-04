@@ -47,4 +47,9 @@ class Booking extends Model
         return $this->belongsToMany(Facility::class, 'booking_facility', 'booking_id', 'facility_id');
 
     }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class, 'booking_id', 'id');
+    }
 }

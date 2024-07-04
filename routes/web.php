@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeUserController;
 use App\Http\Controllers\DestinationsController;
@@ -43,7 +44,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::middleware(['role:user'])->group(function () {
-
+        Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+        Route::put('/reviews/{id}', [ReviewController::class, 'update'])->name('reviews.update');
         Route::get('/bookings/history', [BookingController::class, 'history'])->name('bookings.history');
 
     });

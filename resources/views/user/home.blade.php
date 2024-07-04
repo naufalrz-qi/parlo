@@ -25,6 +25,19 @@
                             <p class="card-price fs-5">
                                 <strong>Rp{{ number_format($destination->price, 2, ',', '.') }}</strong></p>
                             <p class="card-text">{{ $destination->description }}</p>
+                            <div class="mb-3">
+                                @if($destination->averageRating)
+                            @for($i = 1; $i <= 5; $i++)
+                                @if($i <= round($destination->averageRating))
+                                    ⭐
+                                @else
+                                    ☆
+                                @endif
+                            @endfor
+                        @else
+                            No ratings yet.
+                        @endif
+                            </div>
                             <div class="d-flex justify-content-start">
                                 <a href="{{ route('bookings.create', $destination->id) }}" class="btn btn-primary me-2">Book
                                     Now</a>

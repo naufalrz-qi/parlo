@@ -17,11 +17,6 @@
             <a href="{{ route('facilities.create') }}">Add Facility</a>
             <a href="{{ route('facilities.index') }}">View Facilities</a>
         </div>
-        <a onclick="toggleDropdown('reviews')" href="#">Reviews</a>
-        <div class="dp" id="dp-reviews">
-            <a href="#">Add Review</a>
-            <a href="#">View Review</a>
-        </div>
         <a href="{{ route('bookings.index') }}">Booking Transactions</a>
         <p style=>Reports and User Datas</p>
         <hr>

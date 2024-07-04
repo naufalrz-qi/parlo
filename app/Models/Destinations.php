@@ -11,6 +11,11 @@ class Destinations extends Model
     protected $table = 'destinations';
     protected $guarded = [];
 
+    public function reviews()
+    {
+        return $this->hasManyThrough(Review::class, Booking::class, 'destination_id', 'booking_id', 'id', 'id');
+    }
+    
     public function facilities()
     {
         return $this->hasMany(Facility::class, 'destination_id');

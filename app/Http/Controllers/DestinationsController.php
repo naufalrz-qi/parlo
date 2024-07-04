@@ -11,7 +11,11 @@ class DestinationsController extends Controller
 {
     public function showDestinations()
     {
-        $destinations = Destinations::all();
+        $destinations = Destinations::with('reviews')->get();
+        foreach ($destinations as $destination) {
+            $destination['averageRating'] = $destination->reviews->avg('rating');
+        }
+
         $layout = 'app.layouts.app'; // Default layout
 
         if (Auth::check()) {
@@ -35,11 +39,6 @@ class DestinationsController extends Controller
         return view('admin.backend.destinations.view', compact('datas'));
     }
 
-    public function indexUniversal()
-    {
-        $datas = Destinations::get();
-        return view('universal.destinations.destinations', compact('datas'));
-    }
 
     public function add()
     {
@@ -155,10 +154,14 @@ public function destroy($id)
 
 public function show($id)
 {
-    $destination = Destinations::with('facilities')->findOrFail($id);
-    $facilities = $destination->facilities;
+    $destination = Destinations::with(['facilities', 'reviews'])->findOrFail($id);
 
-    return view('admin.backend.destinations.show', compact('destination', 'facilities')); // Menampilkan view show dengan data destinasi
+    $destination['averageRating'] = $destination->reviews->avg('rating');
+
+    $facilities = $destination->facilities;
+    $reviews = $destination->reviews;
+
+    return view('admin.backend.destinations.show', compact('destination', 'facilities', 'reviews')); // Menampilkan view show dengan data destinasi
 }
 
 

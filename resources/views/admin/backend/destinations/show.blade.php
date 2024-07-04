@@ -17,7 +17,7 @@
         .map-container {
 
             width: 100%;
-            height: 100
+            height: 500px;
         }
 
         .map-container iframe {
@@ -64,13 +64,58 @@
         </div>
 
     </div>
-
-    <div class="container mt-5">
-        <h2>Location Map</h2>
-        <div class="map-container">
-            <iframe src="{{ $destination->iframe }}"></iframe>
+    <div class="row">
+        <div class="col-7">
+            <div class="container align-items-start">
+                <h2>Reviews<span>( @if($destination->averageRating)
+                    @for($i = 1; $i <= 5; $i++)
+                        @if($i <= round($destination->averageRating))
+                            ⭐
+                        @else
+                            ☆
+                        @endif
+                    @endfor
+                @else
+                    No ratings yet.
+                @endif)</span></h2>
+            @if($reviews->isEmpty())
+                <p>No reviews yet.</p>
+            @else
+                @foreach($reviews as $review)
+                    <div class="card mb-3 mt-3 w-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <!-- Display stars for rating -->
+                                @for($i = 1; $i <= 5; $i++)
+                                    @if($i <= $review->rating)
+                                        ⭐
+                                    @else
+                                        ☆
+                                    @endif
+                                @endfor
+                                ({{ $review->rating }} / 5)
+                            </h5>
+                            <p class="card-text"><strong>Review:</strong> {{ $review->review }}</p>
+                            <p class="card-text"><strong>Submitted at:</strong> {{ $review->created_at->format('d-m-Y H:i') }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+            </div>
         </div>
+        <div class="col-5">
+            <div class="container p-0" style="height: 600px">
+                <h2>Location Map</h2>
+                <div class="map-container">
+                    <iframe src="{{ $destination->iframe }}" height="600px"></iframe>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
+
     <div class="container">
         <h2>Facilities</h2>
         @if ($facilities->isEmpty())
@@ -97,6 +142,7 @@
                 @endforeach
             </div>
         @endif
+
     </div>
 
 @endsection
